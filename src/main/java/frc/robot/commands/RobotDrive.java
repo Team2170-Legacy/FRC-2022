@@ -59,8 +59,8 @@ public class RobotDrive extends CommandBase {
     {
         System.out.println("Left - " + driverController.getLeftY()+ " Right - " + driverController.getRightY
         ());
-        m_subsystem.Drive(0, -1*driverController.getLeftY());
-        m_subsystem.Drive(1, driverController.getRightY());
+        m_subsystem.Drive(1, driverController.getLeftY());
+        m_subsystem.Drive(0, driverController.getRightY());
     }
 
     // Called once the command ends or is interrupted.
