@@ -128,9 +128,9 @@ public Joystick getOperatorController() {
    *
    * @return the command to run in autonomous
   */
-  public Command getAutonomousCommand() {
+  public AutoControl getAutonomousCommand() {
     // The selected command will be run in autonomous
-    return m_chooser.getSelected();
+    return (AutoControl) m_chooser.getSelected();
   }
   
 

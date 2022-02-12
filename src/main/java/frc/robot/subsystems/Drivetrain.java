@@ -74,4 +74,9 @@ public class Drivetrain extends SubsystemBase {
             this.right2.set(ControlMode.PercentOutput, speed);
         }
     }
+
+    public void setInverted() {
+        this.left1.setInverted(true);
+        this.left2.setInverted(true);
+    }
 }
