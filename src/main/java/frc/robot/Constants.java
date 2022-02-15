@@ -33,5 +33,7 @@ public final class Constants {
     public static  int kRightMotor1Port = 3;
     public static int kRightMotor2Port = 4;
     public static int shootMotor = 5;
+
+    public static int wheelRadius = 3;
 }
 
