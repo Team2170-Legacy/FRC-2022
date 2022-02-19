@@ -91,5 +91,13 @@ public class Drivetrain extends SubsystemBase {
         this.right1.setInverted(true);
         this.right2.setInverted(true);
     }
+
+    public Encoder getEncoders(int num){
+        if (num==0){
+            return encoderL;
+        }else{
+            return encoderR;
+        }
+    }
 }
 
