@@ -49,12 +49,8 @@ public class AutoControl extends CommandBase {
       this.Drive();
   }
   public void Drive() {
-
-      double distance = roboEncoder.getDistance();
-      double rate = roboEncoder.getRate();
-
-      m_subsystem.Drive(0, 1);
-      m_subsystem.Drive(1, 1);
+      m_subsystem.Drive(0, 0.25);
+      m_subsystem.Drive(1, 0.25);
   }
 
   // Called once the command ends or is interrupted.
