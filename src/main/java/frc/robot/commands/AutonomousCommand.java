@@ -72,8 +72,12 @@ public class AutonomousCommand extends CommandBase {
     public void turn(){
 
         // Turns the robot to face the desired direction
-        m_subsystem.Drive(0, 0.5);
-        m_subsystem.Drive(1, -0.5);
+        // Find the heading error; setpoint is 180
+        double error = 180 - gyro.getAngle();
+        double kP = 0.9/180;
+
+        m_subsystem.Drive(0, (0.1+kP*error));
+        m_subsystem.Drive(1, -1*(0.1+kP*error));
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -96,7 +100,7 @@ public class AutonomousCommand extends CommandBase {
                 state="backwards";
                 gyro.reset();
             } else {
-
+                
                 this.turn();
             }
             // CHECK IF TURNED DEGREES IS >= 180
