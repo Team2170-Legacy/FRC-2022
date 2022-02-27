@@ -70,12 +70,10 @@ public class AutonomousCommand extends CommandBase {
     }
     // Turns
     public void turn(){
-         // Find the heading error; setpoint is 90
-        double error = 180 - gyro.getAngle();
 
         // Turns the robot to face the desired direction
-        m_subsystem.Drive(0, 0.05*error);
-        m_subsystem.Drive(1, -0.05*error);
+        m_subsystem.Drive(0, 0.5);
+        m_subsystem.Drive(1, -0.5);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
