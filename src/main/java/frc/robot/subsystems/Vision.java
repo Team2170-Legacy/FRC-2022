@@ -32,6 +32,9 @@ public class Vision extends SubsystemBase {
     private NetworkTable table;
     private boolean isConnected = false;
 
+    private double lensHeight = 0;
+    private double mountAngle = 0;
+
     public Vision() {
         table = NetworkTableInstance.getDefault().getTable("vision");
     }
@@ -71,8 +74,34 @@ public class Vision extends SubsystemBase {
      * @param pipeline
      */
     public void setPipeline(int pipeline) {
-        if (pipeline < 0)
+        if (pipeline < 0) {
+            pipeline = 0;
+            throw new IllegalArgumentException("Pipeline can not be less than zero");
+        } else if (pipeline > 9) {
+            pipeline = 9;
+            throw new IllegalArgumentException("Pipeline can not be greater than nine");
+        }
+        table.getEntry("pipeline").setValue(pipeline);
     }
+
+    /**
+     * @return 
+     */
+    public double getPipeline() {
+        return table.getEntry("pipeline").getDouble(0.0);
+    }
+
+    /**
+     * @param
+     * @return
+     */
+    public double estimateDistance(double targetHeight) {
+        double angleToTargetDegree = mountAngle + getVerticalDegToTarget();
+        double angleToTargetRadians = angleToTargetDegree * (Math.PI / 180);
+
+        return (targetHeight - lensHeight) / Math.tan(angleToTargetRadians);
+    }
+    
     public void log() {
         SmartDashboard.putNumber("LimelightX", getHorizontalDegToTarget());
         SmartDashboard.putNumber("LimelightY", getVerticalDegToTarget());
@@ -85,4 +114,3 @@ public class Vision extends SubsystemBase {
     }
 
 }
-
