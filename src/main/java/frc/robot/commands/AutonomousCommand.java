@@ -88,6 +88,7 @@ public class AutonomousCommand extends CommandBase {
         {
             if (encoderL.getDistance()>=5){
                 state="turning";
+                System.out.println(state);
                 encoderL.reset();
             } else {
 
@@ -98,6 +99,7 @@ public class AutonomousCommand extends CommandBase {
         {
             if (gyro.getAngle()==180){
                 state="backwards";
+                System.out.println(state);
                 gyro.reset();
             } else {
                 
@@ -109,6 +111,7 @@ public class AutonomousCommand extends CommandBase {
         {
             if (encoderL.getDistance()>=5) { //
                 state="stopped";
+                System.out.println(state);
                 encoderL.reset();
             } else {
 

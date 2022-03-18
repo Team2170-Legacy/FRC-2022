@@ -35,5 +35,8 @@ public final class Constants {
     public static int shootMotor = 5;
 
     public static int wheelRadius = 3;
+
+    public static int kIntakeL = 10;
+    public static int kIntakeR = 11;
 }
 
